@@ -5,7 +5,7 @@ pygame.init()
 
 GameMode = True
 margin = 5
-gap = 50
+gap = 30
 win = pygame.display.set_mode((600,600))
 pygame.display.set_caption('MazeGeneration')
 win.fill((255,255,255))
@@ -15,27 +15,27 @@ count = 0
 randNums = list()
 
 #Generating initial tree and edges
-for a in range(9):
-    for b in range(9):
+for a in range(20):
+    for b in range(20):
         tree[count].append((a,b))
         count +=1
         for c in range(-1,2):
             for d in range(-1,2):
                 if abs(c) == abs(d) : continue
                 flag = (a + c,b + d)
-                if ((flag[0] >=0 and flag[0] <=8) and (flag[1] >=0 and flag[1] <=8)):
+                if ((flag[0] >=0 and flag[0] <=19) and (flag[1] >=0 and flag[1] <=19)):
                     if [flag,(a,b)] in edges: continue
                     edges.append([(a,b),flag])
-'''                    
-for row in range(9):
-    for column in range(9):
+
+
+for row in range(20):
+    for column in range(20):
         color = (247,230,69)
         pygame.draw.rect(win,color,((gap)*column,
                 (gap)*row,
                 gap,
                 gap))
         pygame.display.update() 
-'''
 
 #Main Algorithm Goes here 
 while len(tree) > 1:
@@ -80,15 +80,15 @@ while GameMode:
         if abs(a[0][0] - a[1][0]) == 1:
 
             pygame.draw.rect(win,color,((gap)*column ,
-                (gap)*row,
+                (gap)*row ,
                 30,
-                10))
+                5))
             pygame.display.update()
 
         elif abs(a[0][1] - a[1][1]) == 1:
-            pygame.draw.rect(win,color,((gap)*column ,
+            pygame.draw.rect(win,color,((gap)*column,
                 (gap)*row,
-                10,
+                5,
                 30))
             pygame.display.update()
             

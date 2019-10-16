@@ -5,15 +5,15 @@ tree = defaultdict(list)
 count = 0
 
 #Generating initial tree and edges
-for a in range(3):
-    for b in range(3):
+for a in range(9):
+    for b in range(9):
         tree[count].append((a,b))
         count +=1
         for c in range(-1,2):
             for d in range(-1,2):
                 if abs(c) == abs(d) : continue
                 flag = (a + c,b + d)
-                if ((flag[0] >=0 and flag[0] <=2) and (flag[1] >=0 and flag[1] <=2)):
+                if ((flag[0] >=0 and flag[0] <=8) and (flag[1] >=0 and flag[1] <=8)):
                     if [flag,(a,b)] in edges: continue
                     edges.append([(a,b),flag])
                     

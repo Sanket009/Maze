@@ -15,20 +15,29 @@ count = 0
 randNums = list()
 
 #Generating initial tree and edges
-for a in range(3):
-    for b in range(3):
+for a in range(9):
+    for b in range(9):
         tree[count].append((a,b))
         count +=1
         for c in range(-1,2):
             for d in range(-1,2):
                 if abs(c) == abs(d) : continue
                 flag = (a + c,b + d)
-                if ((flag[0] >=0 and flag[0] <=2) and (flag[1] >=0 and flag[1] <=2)):
+                if ((flag[0] >=0 and flag[0] <=8) and (flag[1] >=0 and flag[1] <=8)):
                     if [flag,(a,b)] in edges: continue
                     edges.append([(a,b),flag])
-                    
+'''                    
+for row in range(9):
+    for column in range(9):
+        color = (247,230,69)
+        pygame.draw.rect(win,color,((gap)*column,
+                (gap)*row,
+                gap,
+                gap))
+        pygame.display.update() 
+'''
 
-
+#Main Algorithm Goes here 
 while len(tree) > 1:
     a = random.randint(0,(len(edges)-1))
     for b in tree:
@@ -49,7 +58,7 @@ while len(tree) > 1:
     tree.pop(t2[0],None)
     edges.pop(a)
     randNums.append(a)
-    for k in tree:
+'''    for k in tree:
         print(tree[k])
     
     print(len(edges),len(tree) , a )
@@ -58,20 +67,18 @@ for key,value in tree.items():
     print(key , ':', value)
 
 print(edges)
-
+'''
 while GameMode:
     pygame.time.delay(10)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             GameMode = False
-    color = (0,0,0)
-    #pygame.draw.rect(win,color,((margin + gap)*0 + margin ,(margin + gap)*0 + margin ),gap,gap)
-
-
     for a in edges:
+        color = (0,0,0)
+        row = a[0][0]
+        column = a[0][1]
         if abs(a[0][0] - a[1][0]) == 1:
-            row = a[0][0]
-            column = a[0][1]
+
             pygame.draw.rect(win,color,((gap)*column ,
                 (gap)*row,
                 30,

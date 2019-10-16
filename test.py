@@ -19,22 +19,23 @@ for a in range(3):
                     
 
 randNums = list()
-while len(tree) != 1:
+
+while len(tree) > 1:
     a = random.randint(0,(len(edges)-1))
-    
-    if a in randNums: continue
+    #print(a)
+    count +=1
+    #print(count)
+    #print(a)
     for b in tree:
         for c in tree[b]:
             if c == edges[a][0]: 
                 t1 = (b,c)
                 break
-            break
     for d in tree:
         for e in tree[d]:
             if e == edges[a][1]:
                 t2 = (d,e,tree[d])
                 break
-            break
     if t1[0] == t2[1]: continue
     print(edges)
     for q in t2[2]:

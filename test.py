@@ -22,10 +22,6 @@ randNums = list()
 
 while len(tree) > 1:
     a = random.randint(0,(len(edges)-1))
-    #print(a)
-    count +=1
-    #print(count)
-    #print(a)
     for b in tree:
         for c in tree[b]:
             if c == edges[a][0]: 
@@ -36,8 +32,12 @@ while len(tree) > 1:
             if e == edges[a][1]:
                 t2 = (d,e,tree[d])
                 break
-    if t1[0] == t2[1]: continue
-    print(edges)
+
+    if t1[0] == t2[0]: continue
+    print(edges[a])
+    print('\n')
+    print('t1[0]',tree[t1[0]])
+    print('t2[2] : ' ,t2[2])
     for q in t2[2]:
         tree[t1[0]].append(q)
     tree.pop(t2[0],None)
@@ -45,8 +45,8 @@ while len(tree) > 1:
     randNums.append(a)
     for k in tree:
         print(tree[k])
-    print('\n')
+    
     print(len(edges),len(tree) , a )
-
+    print('\n')
 for key,value in tree.items():
     print(key , ':', value)

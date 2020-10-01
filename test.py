@@ -4,7 +4,7 @@ edges = list()
 tree = defaultdict(list)
 count = 0
 
-#Generating initial tree and edges
+#Generating initial tree
 for a in range(9):
     for b in range(9):
         tree[count].append((a,b))
